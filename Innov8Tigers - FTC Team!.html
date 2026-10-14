@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Innov8Tigers - FTC Team</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --o: #ff7a00;
+            --t: #d0d0d0;
+            --m: #808080;
+            --line: #2b2b2b;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: #000;
+            color: var(--t);
+            font: 17px/1.65 "Barlow", system-ui, Arial, sans-serif
+        }
+
+        a {
+            color: var(--o)
+        }
+
+        .mono,
+        .logo,
+        nav a,
+        h3,
+        .eyebrow,
+        .tag,
+        .ph,
+        .role,
+        footer,
+        h2::before {
+            font-family: "IBM Plex Mono", ui-monospace, Consolas, monospace
+        }
+
+        #sky {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none
+        }
+
+        header,
+        main,
+        footer {
+            position: relative;
+            z-index: 1
+        }
+
+        header {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            background: #000;
+            border-bottom: 1px solid var(--line);
+            z-index: 5
+        }
+
+        .bar {
+            max-width: 1100px;
+            margin: auto;
+            padding: 14px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: .14em;
+            font-size: .9rem
+        }
+
+        .logo::before {
+            content: "";
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            background: var(--o);
+            margin-right: 10px
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 22px
+        }
+
+        nav a {
+            color: var(--m);
+            text-decoration: none;
+            font-size: .78rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent
+        }
+
+        nav a:hover {
+            color: #fff
+        }
+
+        nav a.on {
+            color: #fff;
+            border-color: var(--o)
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px 80px
+        }
+
+        .page {
+            display: none
+        }
+
+        .page.on {
+            display: block;
+            animation: fade .25s ease
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0
+            }
+        }
+
+        h2 {
+            font: 800 clamp(2.8rem, 8vw, 5rem)/.95 "Barlow Condensed", Impact, sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            margin: 0 0 10px
+        }
+
+        h2::before {
+            content: attr(data-n);
+            display: block;
+            color: var(--o);
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: .16em;
+            margin-bottom: 14px
+        }
+
+        h3 {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: 56px 0 18px;
+            color: var(--o);
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: .16em;
+            text-transform: uppercase
+        }
+
+        h3::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: var(--line)
+        }
+
+        h4 {
+            margin: 0 0 6px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #fff
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            padding: 30px 0 10px
+        }
+
+        .hero h1 {
+            font: 800 clamp(3.4rem, 11vw, 6.8rem)/.88 "Barlow Condensed", Impact, sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            margin: 0 0 18px
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 34ch
+        }
+
+        .eyebrow {
+            color: var(--o);
+            font-size: .78rem;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            margin-bottom: 16px !important
+        }
+
+        .hero .ph {
+            margin: 0
+        }
+
+        @media(max-width:760px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px
+        }
+
+        .box {
+            background: #0a0a0a;
+            border: 1px solid var(--line);
+            padding: 22px;
+            transition: border-color .2s
+        }
+
+        .box:hover {
+            border-color: var(--o)
+        }
+
+        .box p {
+            margin: 0
+        }
+
+        .box ul {
+            margin: 0;
+            padding-left: 18px
+        }
+
+        .box li {
+            margin: 4px 0
+        }
+
+        .box li::marker {
+            color: var(--o)
+        }
+
+        .role {
+            color: var(--o) !important;
+            font-size: .75rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 6px !important
+        }
+
+        .center h4 {
+            font: 800 2.8rem/1 "Barlow Condensed", Impact, sans-serif;
+            color: var(--o);
+            margin-bottom: 4px
+        }
+
+        .ph {
+            aspect-ratio: 4/3;
+            border: 1px dashed #444;
+            background: repeating-linear-gradient(45deg, #0a0a0a 0 10px, #101010 10px 20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--m);
+            font-size: .72rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 10px
+        }
+
+        .ph.sq {
+            margin: 0 0 16px
+        }
+
+        .card-link {
+            display: block;
+            text-decoration: none;
+            color: var(--t)
+        }
+
+        .tag {
+            display: inline-block;
+            border: 1px solid var(--o);
+            color: var(--o);
+            padding: 1px 8px;
+            font-size: .68rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 10px
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            text-align: center;
+            padding: 22px;
+            color: var(--m);
+            font-size: .75rem;
+            letter-spacing: .06em
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            * {
+                animation: none !important;
+                transition: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="sky"></canvas>
+    <header>
+        <div class="bar">
+            <div class="logo">INNOV8TIGERS</div>
+            <nav id="nav"><a href="#home">Home</a><a href="#about">About</a><a href="#outreach">Outreach</a><a
+                    href="#seasons">Seasons</a><a href="#support">Support</a></nav>
+        </div>
+    </header>
+    <main>
+
+        <section class="page" id="home">
+            <div class="hero">
+                <div>
+                    <p class="eyebrow">FIRST Tech Challenge · 2026–27</p>
+                    <h1>Innov8 Tigers</h1>
+                    <p>We Don’t Follow the Future. We Build It.</p>
+                </div>
+                <div class="ph">BEETRON robot image</div>
+            </div>
+            <h3>Meet BEETRON</h3>
+            <div class="box center">
+                <p>Meet the BEETRON. </p>
+            </div>
+            <h3>Gracious Professionalism</h3>
+            <div class="box">
+                <p>At Innov8Tigers, <b>Gracious Professionalism</b> is at the heart of everything we do. We believe in
+                    competing with passion while treating every team with respect, supporting fellow innovators, and
+                    sharing our knowledge to help everyone grow. For us, success is about learning together, lifting
+                    others up, and making the FIRST community stronger. We compete like Tigers and collaborate with
+                    kindness!</p>
+            </div>
+            <h3>Coopertition</h3>
+            <div class="box">
+                <p>At Innov8Tigers, <b>Coopertition</b> means competing fiercely while working together to achieve
+                    something greater. We believe that even as we strive to be our best on the field, there is always an
+                    opportunity to support other teams, share ideas, and learn from one another. By combining
+                    competition with collaboration, we push the boundaries of innovation and help the entire FIRST
+                    community succeed.</p>
+            </div>
+        </section>
+
+        <section class="page" id="about">
+            <h2 data-n="02 / About">About Us</h2>
+            <h3>Team Introduction</h3>
+            <div class="box">
+                <p>We are Innov8Tigers, a team of passionate students driven by curiosity, creativity, and a shared love
+                    for robotics and innovation. From brainstorming ideas and designing mechanisms to building,
+                    programming, and problem-solving, we take pride in making our robot as a product almost entirely
+                    made of the team's own hard work and collaboration. Almost every aspect of our journey is
+                    student-led, with each member contributing their skills, learning from one another, and growing
+                    together as a team. Beyond the competition field, we strive to inspire others, share our knowledge,
+                    and show that students can turn their ideas into reality.</p><br>
+                <p><b>Team Number:</b> 31816<br><b>Established:</b> 2025<br><b>Location:</b> Bengaluru, India</p>
+            </div>
+            <h3>Our Mission</h3>
+            <div class="box">
+                <p>Placeholder mission statement. Explain how the team helps members grow through building robots and
+                    how you give back to your school and community.</p>
+            </div>
+            <h3>Core Values</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Value One</h4>
+                    <p>Placeholder description of the first core value.</p>
+                </div>
+                <div class="box">
+                    <h4>Value Two</h4>
+                    <p>Placeholder description of the second core value.</p>
+                </div>
+                <div class="box">
+                    <h4>Value Three</h4>
+                    <p>Placeholder description of the third core value.</p>
+                </div>
+                <div class="box">
+                    <h4>Value Four</h4>
+                    <p>Placeholder description of the fourth core value.</p>
+                </div>
+            </div>
+            <h3>Team Members</h3>
+            <div class="grid" id="members"></div>
+            <h3>Contact Us</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Email</h4>
+                    <p>Innov8Tigers@stonehill.in</p>
+                </div>
+            </div>
+            <h3>Follow Us</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Instagram</h4>
+                    <p>@innov8tigers<br>Photo sharing</p>
+                </div>
+                <div class="box">
+                    <h4>YouTube</h4>
+                    <p>@innov8tigers<br>Robot videos and match recordings</p>
+                </div>
+                <div class="box">
+                    <h4>Other Platform</h4>
+                    <p>Placeholder handle<br>Updates</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="page" id="outreach">
+            <h2 data-n="03 / Outreach">Outreach</h2>
+            <p>Placeholder intro: how Innov8Tigers shares STEM and robotics with our community.</p>
+            <h3>Community Events</h3>
+            <div class="grid">
+                <div class="box">
+                    <div class="ph sq">[ event photo ]</div>
+                    <h4>Event Title</h4>
+                    <p>Placeholder description of an outreach event, who attended and what the team taught.</p>
+                </div>
+                <div class="box">
+                    <div class="ph sq">[ event photo ]</div>
+                    <h4>Event Title</h4>
+                    <p>Placeholder description of an outreach event, who attended and what the team taught.</p>
+                </div>
+                <div class="box">
+                    <div class="ph sq">[ event photo ]</div>
+                    <h4>Event Title</h4>
+                    <p>Placeholder description of an outreach event, who attended and what the team taught.</p>
+                </div>
+            </div>
+            <h3>School &amp; Mentoring</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Workshops</h4>
+                    <p>Placeholder: workshops introducing younger students to robotics.</p>
+                </div>
+                <div class="box">
+                    <h4>Mentoring Rookie Teams</h4>
+                    <p>Placeholder: support offered to new FTC and FLL teams.</p>
+                </div>
+                <div class="box">
+                    <h4>School Demos</h4>
+                    <p>Placeholder: robot demonstrations at school events.</p>
+                </div>
+            </div>
+            <h3>Outreach Impact</h3>
+            <div class="grid">
+                <div class="box center">
+                    <h4>00</h4>
+                    <p>Events held</p>
+                </div>
+                <div class="box center">
+                    <h4>000</h4>
+                    <p>Students reached</p>
+                </div>
+                <div class="box center">
+                    <h4>00</h4>
+                    <p>Hours volunteered</p>
+                </div>
+            </div>
+            <h3>Resources We Share</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Learning Resources</h4>
+                    <p>Placeholder: guides, CAD files and code we share with other teams. Coming soon.</p>
+                </div>
+                <div class="box">
+                    <h4>More Resources</h4>
+                    <p>Coming soon.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="page" id="seasons">
+            <h2 data-n="04 / Seasons">Season Archives</h2>
+            <div class="grid">
+                <a class="box card-link" href="#seasons">
+                    <div class="ph sq">[ BEETRON robot image ]</div><span class="tag">Current</span>
+                    <h4>2026 – 2027</h4>
+                    <p>Robot: BEETRON</p>
+                </a>
+                <a class="box card-link" href="#seasons">
+                    <div class="ph sq">[ Tigress robot image ]</div><span class="tag">2025</span>
+                    <h4>2025 – DECODE</h4>
+                    <p>Robot: Tigress</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="page" id="support">
+            <h2 data-n="05 / Support">Support Us</h2>
+            <p>Thank you for your interest in Innov8Tigers! Your support helps us keep pursuing excellence.</p>
+            <h3>Sponsorship Support</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Why Sponsor Us?</h4>
+                    <ul>
+                        <li>Support youth STEM education</li>
+                        <li>Help cultivate future engineers</li>
+                        <li>Placeholder benefit</li>
+                        <li>Sponsor logos shown on our website and team apparel</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>How Funds Are Used</h4>
+                    <ul>
+                        <li>Robot parts and materials</li>
+                        <li>Tools and equipment</li>
+                        <li>Registration and travel</li>
+                        <li>Training and outreach</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>Ways to Sponsor</h4>
+                    <ul>
+                        <li><b>Financial:</b> placeholder</li>
+                        <li><b>Equipment:</b> placeholder</li>
+                        <li><b>Venue:</b> placeholder</li>
+                        <li><b>Guidance:</b> placeholder</li>
+                    </ul>
+                </div>
+            </div>
+            <h3>Technical Guidance</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Areas We Need</h4>
+                    <ul>
+                        <li>Mechanical engineering and CAD</li>
+                        <li>Software and autonomous</li>
+                        <li>Electronics</li>
+                        <li>Project management</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>Guidance Methods</h4>
+                    <ul>
+                        <li>Regular technical exchanges</li>
+                        <li>Advice at key design stages</li>
+                        <li>Code review</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>What You'll Gain</h4>
+                    <ul>
+                        <li>Work with a passionate student team</li>
+                        <li>Share your expertise</li>
+                        <li>Placeholder benefit</li>
+                    </ul>
+                </div>
+            </div>
+            <h3>Volunteer Support</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Help We Need</h4>
+                    <ul>
+                        <li>Competition logistics</li>
+                        <li>Outreach coordination</li>
+                        <li>Media and content</li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <h4>Material Donations</h4>
+                    <ul>
+                        <li>Spare robot parts</li>
+                        <li>Tools and equipment</li>
+                        <li>Electronic components</li>
+                    </ul>
+                </div>
+            </div>
+            <h3>Contact Us</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Get in Touch</h4>
+                    <p>Email: Innov8Tigers@stonehill.in</p>
+                </div>
+                <div class="box">
+                    <h4>Learn More</h4>
+                    <p><a href="#about">→ About Us</a><br><a href="#seasons">→ Season Archives</a><br><a
+                            href="#outreach">→ Outreach</a></p>
+                </div>
+            </div>
+            <h3>FAQ</h3>
+            <div class="grid">
+                <div class="box">
+                    <h4>Is there a minimum amount?</h4>
+                    <p>Placeholder answer.</p>
+                </div>
+                <div class="box">
+                    <h4>Can I direct how funds are used?</h4>
+                    <p>Placeholder answer.</p>
+                </div>
+                <div class="box">
+                    <h4>How can I track fund usage?</h4>
+                    <p>Placeholder answer.</p>
+                </div>
+            </div>
+            <h3>Thank You for Your Support!</h3>
+            <div class="box center">
+                <p>Every bit of support helps us keep growing in FTC.</p>
+            </div>
+        </section>
+
+    </main>
+    <footer>© Innov8Tigers. Contact: Innov8Tigers@stonehill.in</footer>
+    <script>
+        (function () {
+            var roles = [["Shasvat Sridhara", "Captain", "Overall coordination and strategy"], ["Arush Tiwary", "Programming Lead", "Robot programming and autonomous"], ["Name", "Mechanical Lead", "Mechanical design and build"], ["Name", "Outreach Lead", "Sponsorship and promotion"], ["Name", "Driver", "Robot operation"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"]];
+            document.getElementById("members").innerHTML = roles.map(function (r) { return '<div class="box"><div class="ph sq">[ photo ]</div><h4>' + r[0] + '</h4><p class="role">' + r[1] + '</p><p>' + r[2] + '</p></div>' }).join("");
+            var ids = ["home", "about", "outreach", "seasons", "support"];
+            function show() {
+                var h = location.hash.slice(1); if (ids.indexOf(h) < 0) h = "home";
+                ids.forEach(function (i) { document.getElementById(i).classList.toggle("on", i === h) });
+                document.querySelectorAll("#nav a").forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + h) });
+                window.scrollTo(0, 0)
+            }
+            window.addEventListener("hashchange", show); show();
+        })();
+
+        (function () {
+            var c = document.getElementById("sky"), x = c.getContext("2d"), W, H, stars = [], comets = [];
+            var cols = ["255,122,0", "255,255,255"];
+            function size() { W = c.width = innerWidth; H = c.height = innerHeight; stars = []; for (var i = 0; i < Math.min(90, W * H / 14000); i++)stars.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * 1.4 + .3, p: Math.random() * 6, s: Math.random() * .03 + .01, c: cols[Math.floor(Math.random() * cols.length)] }) }
+            function spawn() { var big = Math.random() < .3; comets.push({ x: Math.random() * W * 1.2, y: -20, v: big ? 7 : 4 + Math.random() * 3, a: Math.PI * (.62 + Math.random() * .1), l: big ? 200 : 110, w: big ? 1.8 : 1, c: cols[Math.floor(Math.random() * cols.length)] }) }
+            function draw() {
+                x.clearRect(0, 0, W, H);
+                stars.forEach(function (t) { t.p += t.s; x.fillStyle = "rgba(" + t.c + "," + (.15 + .45 * Math.abs(Math.sin(t.p))) + ")"; x.beginPath(); x.arc(t.x, t.y, t.r, 0, 6.3); x.fill() });
+                if (Math.random() < .008 && comets.length < 2) spawn();
+                comets = comets.filter(function (m) {
+                    m.x += Math.cos(m.a) * m.v; m.y += Math.sin(m.a) * m.v;
+                    var tx = m.x - Math.cos(m.a) * m.l, ty = m.y - Math.sin(m.a) * m.l, g = x.createLinearGradient(m.x, m.y, tx, ty);
+                    g.addColorStop(0, "rgba(" + m.c + ",1)"); g.addColorStop(1, "rgba(" + m.c + ",0)");
+                    x.strokeStyle = g; x.lineWidth = m.w; x.lineCap = "round"; x.beginPath(); x.moveTo(m.x, m.y); x.lineTo(tx, ty); x.stroke();
+                    x.fillStyle = "#fff"; x.beginPath(); x.arc(m.x, m.y, m.w * .8, 0, 6.3); x.fill();
+                    return m.y < H + 250 && m.x > -250
+                });
+                requestAnimationFrame(draw)
+            }
+            addEventListener("resize", size); size(); draw();
+        })();
+    </script>
+</body>
+
+</html>
