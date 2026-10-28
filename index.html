@@ -293,6 +293,15 @@
             margin: 0 0 16px
         }
 
+        .robot-image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: contain;
+            margin: 0 0 16px;
+            background: #0a0a0a
+        }
+
         .card-link {
             display: block;
             text-decoration: none;
@@ -385,26 +394,30 @@
             </div>
             <h3>Our Mission</h3>
             <div class="box">
-                <p>Placeholder mission statement. Explain how the team helps members grow through building robots and
-                    how you give back to your school and community.</p>
+                <p>
+                    At Innov8Tigers, our mission is to innovate with purpose, engineer creative solutions, and inspire
+                    the next generation of problem-solvers. Through robotics, collaboration, and STEM outreach, we
+                    strive to make technology accessible, learn from the world around us, and turn ideas into impact.
+                    Guided by Gracious Professionalism and Coopertition, we believe that true success goes beyond
+                    competition: it lies in growing together, empowering our community, and building a future where
+                    innovation benefits everyone.</p>
             </div>
             <h3>Core Values</h3>
             <div class="grid">
                 <div class="box">
-                    <h4>Value One</h4>
-                    <p>Placeholder description of the first core value.</p>
+                    <h4>Value One: Student-Led Innovation</h4>
+                    <p>We believe the best learning happens when students take the lead, experiment with ideas, and
+                        solve problems independently.</p>
                 </div>
                 <div class="box">
-                    <h4>Value Two</h4>
-                    <p>Placeholder description of the second core value.</p>
+                    <h4>Value Two: Curiosity</h4>
+                    <p>We believe every challenge is an opportunity to think creatively, explore new ideas, and develop
+                        innovative solutions.</p>
                 </div>
                 <div class="box">
-                    <h4>Value Three</h4>
-                    <p>Placeholder description of the third core value.</p>
-                </div>
-                <div class="box">
-                    <h4>Value Four</h4>
-                    <p>Placeholder description of the fourth core value.</p>
+                    <h4>Value Three: Teamwork & Growth</h4>
+                    <p>We believe collaboration and shared learning help us grow as individuals and achieve more as a
+                        team.</p>
                 </div>
             </div>
             <h3>Team Members</h3>
@@ -506,7 +519,8 @@
                     <p>Robot: BEETRON</p>
                 </a>
                 <a class="box card-link" href="#seasons">
-                    <div class="ph sq">[ Tigress robot image ]</div><span class="tag">2025</span>
+                    <img class="robot-image" src="images/Tigress.png" alt="Tigress robot">
+                    <span class="tag">2025</span>
                     <h4>2025 – DECODE</h4>
                     <p>Robot: Tigress</p>
                 </a>
@@ -538,12 +552,9 @@
                 </div>
                 <div class="box">
                     <h4>Ways to Sponsor</h4>
-                    <ul>
-                        <li><b>Financial:</b> placeholder</li>
-                        <li><b>Equipment:</b> placeholder</li>
-                        <li><b>Venue:</b> placeholder</li>
-                        <li><b>Guidance:</b> placeholder</li>
-                    </ul>
+                   
+                        <p>Contact Innov8Tigers@stonehill.in for more information on sponsorship opportunities.</p>
+                   
                 </div>
             </div>
             <h3>Technical Guidance</h3>
@@ -574,25 +585,7 @@
                     </ul>
                 </div>
             </div>
-            <h3>Volunteer Support</h3>
-            <div class="grid">
-                <div class="box">
-                    <h4>Help We Need</h4>
-                    <ul>
-                        <li>Competition logistics</li>
-                        <li>Outreach coordination</li>
-                        <li>Media and content</li>
-                    </ul>
-                </div>
-                <div class="box">
-                    <h4>Material Donations</h4>
-                    <ul>
-                        <li>Spare robot parts</li>
-                        <li>Tools and equipment</li>
-                        <li>Electronic components</li>
-                    </ul>
-                </div>
-            </div>
+            
             <h3>Contact Us</h3>
             <div class="grid">
                 <div class="box">
@@ -605,24 +598,10 @@
                             href="#outreach">→ Outreach</a></p>
                 </div>
             </div>
-            <h3>FAQ</h3>
-            <div class="grid">
-                <div class="box">
-                    <h4>Is there a minimum amount?</h4>
-                    <p>Placeholder answer.</p>
-                </div>
-                <div class="box">
-                    <h4>Can I direct how funds are used?</h4>
-                    <p>Placeholder answer.</p>
-                </div>
-                <div class="box">
-                    <h4>How can I track fund usage?</h4>
-                    <p>Placeholder answer.</p>
-                </div>
-            </div>
+            
             <h3>Thank You for Your Support!</h3>
             <div class="box center">
-                <p>Every bit of support helps us keep growing in FTC.</p>
+                <p>Every bit of support helps us keep growing in FTC!</p>
             </div>
         </section>
 
@@ -630,7 +609,19 @@
     <footer>© Innov8Tigers. Contact: Innov8Tigers@stonehill.in</footer>
     <script>
         (function () {
-            var roles = [["Shasvat Sridhara", "Captain", "Overall coordination and strategy"], ["Arush Tiwary", "Programming Lead", "Robot programming and autonomous"], ["Name", "Mechanical Lead", "Mechanical design and build"], ["Name", "Outreach Lead", "Sponsorship and promotion"], ["Name", "Driver", "Robot operation"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"], ["Name", "Team Member", "Placeholder role"]];
+            var roles = [
+                ["Shasvat Sridhara", "Captain + Mechanical Lead + Scout", "Leads overall team coordination and strategy, oversees mechanical design and construction, and contributes to scouting"],
+                ["Arush Tiwary", "Co-Captain + Programming Lead + Design Innovator + Website Builder + Java Instructor + Laser Cutter Operator", "Supports team coordination, leads robot programming and autonomous development, drives design innovation, manages the team website, and teaches Java"],
+                ["Aarik DSouza", "CAD Lead + Programming Team Member", "Leads CAD modelling and robot design while contributing to programming"],
+                ["Ananya Tayal", "Marketing Co-Lead", "Co-leads team marketing, branding, social media, and promotional content"],
+                ["Sanskriti Mehta", "Marketing Co-Lead", "Co-leads team marketing, branding, social media, and promotional content"],
+                ["Ujas Hari", "Outreach Lead", "Leads STEM outreach, community engagement, and initiatives to promote robotics"],
+                ["Prithvi Skandan SureshBabu", "Programming Team Member + Scout Lead", "Contributes to robot programming and leads scouting activities and match analysis"],
+                ["Yash Butani", "Driver + Mechanical Team Member + Co-Outreach Lead", "Operates the robot during matches and contributes to mechanical design and construction. Assists with outreach initiatives"],
+                ["Manan Dhingra", "Driver + CAD Member", "Operates the robot during matches and contributes to CAD modelling and robot design"],
+                ["Pranav Iyengar", "Mechanical Team Member + Scout", "Contributes to mechanical design and construction while supporting scouting and match analysis"],
+                ["Samarth (Ganesh) Kumar", "Team Member", "Contributes to robot development, testing, and general team activities"]
+            ];
             document.getElementById("members").innerHTML = roles.map(function (r) { return '<div class="box"><div class="ph sq">[ photo ]</div><h4>' + r[0] + '</h4><p class="role">' + r[1] + '</p><p>' + r[2] + '</p></div>' }).join("");
             var ids = ["home", "about", "outreach", "seasons", "support"];
             function show() {
